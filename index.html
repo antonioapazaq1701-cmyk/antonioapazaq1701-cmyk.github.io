@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antonio Apaza Quispe | Estadística e Informática</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f2240;
+    --navy-mid: #1a3a6b;
+    --accent: #2e7dd1;
+    --accent-light: #e8f1fb;
+    --text: #1c1c1e;
+    --muted: #5a6472;
+    --line: #d8dee6;
+    --bg: #f7f8fa;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 3.5rem 1.5rem 2.8rem;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--navy-mid);
+    border: 3px solid rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin: 0 auto 1.2rem;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  header h1 {
+    font-size: 1.85rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    margin-bottom: 0.4rem;
+  }
+
+  header p.subtitle {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 1.6rem;
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .badge:hover { background: rgba(255,255,255,0.18); }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 0.85rem 1.2rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  nav ul li a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  section {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 2rem 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  section h2 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #2a2e35;
+    font-style: italic;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .edu-year {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    min-width: 100px;
+    padding-top: 2px;
+  }
+
+  .edu-detail strong {
+    font-size: 0.93rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .edu-detail span {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  .skill-group h3 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    background: var(--accent-light);
+    color: #0c447c;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+
+  /* ── PROJECTS ── */
+  .project-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .project-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .project-item h3 {
+    font-size: 0.93rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .project-item p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    margin-top: 8px;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .ptag {
+    font-size: 0.72rem;
+    background: #f0f2f5;
+    color: var(--muted);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* ── AREAS ── */
+  .area-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .area-item {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.88rem;
+  }
+  .contact-row:last-child { border-bottom: none; }
+
+  .contact-label {
+    font-weight: 500;
+    min-width: 80px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-row a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .contact-row a:hover { text-decoration: underline; }
+
+  /* ── IDIOMAS ── */
+  .lang-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.88rem;
+  }
+  .lang-row:last-child { border-bottom: none; }
+
+  .lang-name { min-width: 90px; font-weight: 500; }
+  .lang-level {
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 2px 9px;
+    border-radius: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 620px) {
+    header h1 { font-size: 1.5rem; }
+    section { padding: 1.4rem 1.2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    nav ul { flex-wrap: wrap; justify-content: flex-start; }
+    nav ul li a { padding: 0.7rem 0.9rem; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="avatar">AA</div>
+  <h1>Antonio Apaza Quispe</h1>
+  <p class="subtitle">Universidad Nacional del Altiplano · Puno, Perú</p>
+  <div class="badge-row">
+    <a class="badge" href="mailto:antonioapazaq1701@gmail.com">✉ Correo</a>
+    <a class="badge" href="https://github.com/antonioapazaw1701-cmyk" target="_blank">⌥ GitHub</a>
+    <span class="badge">Estudiante · VI Semestre</span>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#formacion">Formación</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#areas">Áreas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="sobre-mi">
+    <h2>Sobre mí</h2>
+    <p class="about-text">
+      Estudiante de Ingeniería Estadística e Informática en la Universidad Nacional del Altiplano (UNA Puno), cursando el VI semestre. Me interesa el análisis estadístico aplicado, el desarrollo de software y el aprendizaje automático. Complemento mi formación académica con proyectos personales orientados al análisis de datos y la construcción de aplicaciones web.
+    </p>
+  </section>
+
+  <section id="formacion">
+    <h2>Formación académica</h2>
+
+    <div class="edu-item">
+      <div class="edu-year">2023 — actualidad</div>
+      <div class="edu-detail">
+        <strong>Ingeniería Estadística e Informática · VI Semestre</strong>
+        <span>Universidad Nacional del Altiplano — Puno, Perú</span>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-year">2018 — 2022</div>
+      <div class="edu-detail">
+        <strong>Educación Secundaria</strong>
+        <span>Gran Unidad Escolar San Carlos — Puno, Perú</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <h2>Habilidades y herramientas</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Lenguajes y tecnologías</h3>
+        <div class="tag-list">
+          <span class="tag">HTML5 / CSS3</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">C++</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Git / GitHub</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Software de análisis</h3>
+        <div class="tag-list">
+          <span class="tag">Excel</span>
+          <span class="tag">SPSS</span>
+          <span class="tag">Minitab</span>
+          <span class="tag">EViews</span>
+          <span class="tag">Python (análisis)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <h2>Proyectos destacados</h2>
+
+    <div class="project-item">
+      <h3>Sistema de gestión para restaurante</h3>
+      <p>Aplicación para la administración de usuarios, pedidos, mesas y operaciones internas de un restaurante.</p>
+      <div class="project-tags">
+        <span class="ptag">Bases de datos</span>
+        <span class="ptag">SQL</span>
+        <span class="ptag">Software de gestión</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <h3>Sistema de gestión para cadena de supermercados</h3>
+      <p>Gestión centralizada de información y operaciones para múltiples sedes de una cadena comercial.</p>
+      <div class="project-tags">
+        <span class="ptag">Bases de datos relacionales</span>
+        <span class="ptag">Arquitectura de datos</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <h3>Aplicaciones web independientes</h3>
+      <p>Proyectos personales publicados en GitHub que incluyen interfaces interactivas y herramientas de análisis.</p>
+      <div class="project-tags">
+        <span class="ptag">HTML/CSS/JS</span>
+        <span class="ptag">GitHub Pages</span>
+        <span class="ptag">Desarrollo web</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="areas">
+    <h2>Áreas de formación</h2>
+    <div class="area-list">
+      <span class="area-item">Estadística aplicada</span>
+      <span class="area-item">Series de tiempo</span>
+      <span class="area-item">Análisis de datos</span>
+      <span class="area-item">Modelos estadísticos</span>
+      <span class="area-item">Aprendizaje automático</span>
+      <span class="area-item">Bases de datos</span>
+      <span class="area-item">Desarrollo de software</span>
+      <span class="area-item">Econometría</span>
+    </div>
+  </section>
+
+  <section id="idiomas">
+    <h2>Idiomas</h2>
+    <div class="lang-row">
+      <span class="lang-name">Español</span>
+      <span class="lang-level">Nativo</span>
+    </div>
+    <div class="lang-row">
+      <span class="lang-name">Inglés</span>
+      <span class="lang-level">Básico — Intermedio</span>
+    </div>
+    <div class="lang-row">
+      <span class="lang-name">Portugués</span>
+      <span class="lang-level">Básico</span>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <div class="contact-row">
+      <span class="contact-label">Correo</span>
+      <a href="mailto:antonioapazaq1701@gmail.com">antonioapazaq1701@gmail.com</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">GitHub</span>
+      <a href="https://github.com/antonioapazaw1701-cmyk" target="_blank">github.com/antonioapazaw1701-cmyk</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Ubicación</span>
+      <span>Puno, Perú</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 · Antonio Vicente Apaza Quispe · Universidad Nacional del Altiplano Puno
+</footer>
+
+</body>
+</html>
